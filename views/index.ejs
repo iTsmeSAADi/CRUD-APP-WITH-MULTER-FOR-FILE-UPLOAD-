@@ -1,0 +1,123 @@
+<%-include('./partials/header.ejs') %>
+
+
+
+<div class="container table-container mt-4">
+    <h2 class="mt-4 text-center">User Records</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% user_data.forEach((user) => { %>
+              <tr class="align-middle">
+                <td class="text-center"><%= user._id %></td>
+                <td class="text-center">
+                    <img 
+                        src="<%= 'uploads/' + user.image.split('uploads\\')[1] %>" 
+                        alt="User Image" 
+                        class="img-thumbnail rounded-circle" 
+                        style="width: 50px; height: 50px;"
+                    >
+                </td>
+                <td class="text-center"><%= user.name %></td>
+                <td class="text-center"><%= user.email %></td>
+                <td class="text-center"><%= user.phone %></td>
+                <td class="text-center action-icons">
+
+                 
+                 
+                 
+                                       <!-- Button trigger modal -->
+                                       <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<%= user._id %>">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                 
+                                                   <!-- Modal -->
+                                                   <div class="modal fade" id="editModal<%= user._id %>" tabindex="-1" aria-labelledby="editModalLabel<%= user._id %>" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="editModalLabel<%= user._id %>">Edit User</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/update/<%=user._id%>" method="post" id="update_user">
+                                                                    <div class="form-group">
+                                                                        <label class="w-100 text-start" for="name">Name</label>
+                                                                        <input type="text" class="form-control" name="update_name" id="name" value="<%= user.name || '' %>" placeholder="Enter your name" required>
+                                                                    </div>
+                                
+                                                                    <div class="form-group">
+                                                                        <label for="email" class="w-100 text-start">Email</label>
+                                                                        <input type="email" class="form-control" name="update_email" id="email" value="<%= user.email || '' %>" placeholder="Enter your email" required>
+                                                                    </div>
+                                
+                                                                    <div class="form-group">
+                                                                        <label for="phone" class="w-100 text-start">Phone</label>
+                                                                        <input type="tel" class="form-control" id="phone" name="update_phone" value="<%= user.phone || '' %>" placeholder="Enter your phone number" required>
+                                                                    </div>
+                                
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+
+
+                                                                      <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= user._id %>">
+                      <i class="fas fa-trash-alt"></i>
+                  </button>
+               
+                  <!-- Modal -->
+                  <div class="modal fade" id="deleteModal<%= user._id %>" tabindex="-1" aria-labelledby="deleteModalLabel<%= user._id %>" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteModalLabel<%= user._id %>">Delete User</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure you want to delete the user <%= user.name %>?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <form action="/delete/<%= user._id %>" method="post">
+                            <button type="submit" class="btn btn-danger">Sure, Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+            
+
+
+                </td>
+            </tr>
+                              
+                  
+              <% }) %>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+<%-include('./partials/footer.ejs') %>

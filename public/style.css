@@ -1,0 +1,89 @@
+body {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+
+  .container {
+    margin-top: 50px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .user-form-container {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0;
+  }
+
+  .form-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    background-color: #07a0ff;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .add-user-btn {
+    background-color: #07a0ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .add-user-btn:hover {
+    background-color: #07a0fe;
+  }
+
+.table-container {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .table-container table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .table-container th, .table-container td {
+    padding: 12px;
+    text-align: center;
+  }
+
+  .table-container th {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+
+  .table-container tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+  .table-container tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+
+  .action-icons {
+    font-size: 18px;
+  }
+
+  .action-icons a {
+    margin: 0 5px;
+    color: #ffffff;
+  }
+
+  .action-icons a:hover {
+    text-decoration: none;
+  }
